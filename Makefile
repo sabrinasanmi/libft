@@ -26,23 +26,34 @@ ft_putendl_fd.c \
 ft_putnbr_fd.c \
 ft_calloc.c \
 ft_strlcat.c \
+ft_strdup.c \
+ft_atoi.c \
+ft_substr.c \
+ft_strjoin.c \
+ft_strtrim.c \
+ft_itoa.c \
+ft_strmapi.c \
+ft_striteri.c \
+ft_split.c
 
-CC = gcc 
-CFLAGS = -Wall -Wextra -Werror 
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ)	libft.h
+$(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
-%.o: %.c
-	$(CC)	$(CFLAGS)	-I.	-c	$<	-o	$@
+%.o: %.c libft.h
+	$(CC) $(CFLAGS) -c $< -o $@
 
- clean:
-	rm -f $(OBJ)	$(BONUS_OBJS)
+clean:
+	rm -f $(OBJ) $(BONUS_OBJS)
 
- fclean:	clean
-	rm	-f	$(NAME)
+fclean: clean
+	rm -f $(NAME)
 
- re:fclean all
+re: fclean all
+
+.PHONY: all clean fclean re
