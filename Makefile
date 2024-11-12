@@ -45,11 +45,11 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ)
 
-%.o: %.c libft.h
-	$(CC) $(CFLAGS) -c $< -o $@
+%.o: %.c
+	$(CC) $(CFLAGS) -I . -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(BONUS_OBJS)
+	rm -f $(OBJ)
 
 fclean: clean
 	rm -f $(NAME)
